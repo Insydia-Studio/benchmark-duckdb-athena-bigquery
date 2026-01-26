@@ -1,0 +1,141 @@
+platform,query_id,query_category,run_number,is_cold_start,latency_ms,execution_time_ms,bytes_scanned,bytes_billed,rows_returned,cpu_time_ms,cache_hit,slot_ms,calculated_cost,error,timestamp
+bigquery,Q43,wide_scan,0,True,833.6294170003384,0,0,0,0,0,,0,0.0,"400 Unrecognized name: changePercent at [11:17]; reason: invalidQuery, location: query, message: Unrecognized name: changePercent at [11:17]
+
+Location: europe-west1
+Job ID: 9f17e937-e8ce-4ae4-bd26-b21e2a5eba16
+",2026-01-26T11:04:27.898918+00:00
+bigquery,Q43,wide_scan,1,False,629.9304169951938,0,0,0,0,0,,0,0.0,"400 Unrecognized name: changePercent at [11:17]; reason: invalidQuery, location: query, message: Unrecognized name: changePercent at [11:17]
+
+Location: europe-west1
+Job ID: b9213678-2d84-4a12-9056-84afe886cb51
+",2026-01-26T11:04:28.533416+00:00
+bigquery,Q43,wide_scan,2,False,723.5280830063857,0,0,0,0,0,,0,0.0,"400 Unrecognized name: changePercent at [11:17]; reason: invalidQuery, location: query, message: Unrecognized name: changePercent at [11:17]
+
+Location: europe-west1
+Job ID: 590044dd-597d-4dee-a689-92f269d4cfb7
+",2026-01-26T11:04:29.261679+00:00
+bigquery,Q43,wide_scan,3,False,608.7740419898182,0,0,0,0,0,,0,0.0,"400 Unrecognized name: changePercent at [11:17]; reason: invalidQuery, location: query, message: Unrecognized name: changePercent at [11:17]
+
+Location: europe-west1
+Job ID: 947b498b-9201-47fd-b40f-5cef15aae7e8
+",2026-01-26T11:04:29.875923+00:00
+bigquery,Q44,wide_scan,0,True,690.7481250236742,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: 684c0ee8-4241-49f0-a42d-1e51629ab974
+",2026-01-26T11:04:30.570476+00:00
+bigquery,Q44,wide_scan,1,False,732.9480000189506,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: 4ee824a2-aee7-425d-a686-5dc031c584c9
+",2026-01-26T11:04:31.309140+00:00
+bigquery,Q44,wide_scan,2,False,716.1814999999478,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: e2d8dffd-0dd2-47dd-b0f5-5bb5f2ba44c4
+",2026-01-26T11:04:32.030259+00:00
+bigquery,Q44,wide_scan,3,False,611.624833982205,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: fb729d1f-f267-4c45-885a-e1d8ea67e4ef
+",2026-01-26T11:04:32.647616+00:00
+bigquery,Q45,wide_scan,0,True,16735.61112501193,374973,22780641391,22781362176,50000,0,False,374973,0.10359764099121094,,2026-01-26T11:04:49.388792+00:00
+bigquery,Q45,wide_scan,1,False,3962.9503749893047,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:04:53.369945+00:00
+bigquery,Q45,wide_scan,2,False,4419.150208006613,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:04:57.807002+00:00
+bigquery,Q45,wide_scan,3,False,3498.0255420086905,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:05:01.318268+00:00
+bigquery,Q46,wide_scan,0,True,12537.238416989567,228910,16798334155,16799236096,10000,0,False,228910,0.07639408111572266,,2026-01-26T11:05:13.872983+00:00
+bigquery,Q46,wide_scan,1,False,1967.4975420057308,0,0,0,10000,0,True,0,0.01,,2026-01-26T11:05:15.847927+00:00
+bigquery,Q46,wide_scan,2,False,1947.947957989527,0,0,0,10000,0,True,0,0.01,,2026-01-26T11:05:17.800877+00:00
+bigquery,Q46,wide_scan,3,False,1824.5005409989972,0,0,0,10000,0,True,0,0.01,,2026-01-26T11:05:19.631571+00:00
+bigquery,Q47,wide_scan,0,True,17423.321665992262,253888,19190538899,19191037952,100000,0,False,253888,0.08727073669433594,,2026-01-26T11:05:37.061668+00:00
+bigquery,Q47,wide_scan,1,False,8078.701374994125,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:05:45.171630+00:00
+bigquery,Q47,wide_scan,2,False,7525.946415989893,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:05:52.727956+00:00
+bigquery,Q47,wide_scan,3,False,7326.7281250155065,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:06:00.083907+00:00
+bigquery,Q48,wide_scan,0,True,10399.151040997822,310977,12013863691,12014583808,50000,0,False,310977,0.05463600158691406,,2026-01-26T11:06:10.510700+00:00
+bigquery,Q48,wide_scan,1,False,3676.9912079907954,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:06:14.200264+00:00
+bigquery,Q48,wide_scan,2,False,2898.06433301419,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:06:17.110808+00:00
+bigquery,Q48,wide_scan,3,False,2968.4992499824148,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:06:20.091398+00:00
+bigquery,Q49,wide_scan,0,True,16774.773165991064,316135,16798334155,16799236096,100000,0,False,316135,0.07639408111572266,,2026-01-26T11:06:36.881274+00:00
+bigquery,Q49,wide_scan,1,False,8707.832583982963,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:06:45.612874+00:00
+bigquery,Q49,wide_scan,2,False,8774.98958297656,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:06:54.412241+00:00
+bigquery,Q49,wide_scan,3,False,8397.100125002908,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:07:02.832251+00:00
+bigquery,Q50,wide_scan,0,True,6857.841707998887,264576,16798334155,16799236096,1000,0,False,264576,0.07639408111572266,,2026-01-26T11:07:09.717688+00:00
+bigquery,Q50,wide_scan,1,False,1036.3450000004377,0,0,0,1000,0,True,0,0.01,,2026-01-26T11:07:10.760008+00:00
+bigquery,Q50,wide_scan,2,False,1047.851792012807,0,0,0,1000,0,True,0,0.01,,2026-01-26T11:07:11.813313+00:00
+bigquery,Q50,wide_scan,3,False,1167.1058750071097,0,0,0,1000,0,True,0,0.01,,2026-01-26T11:07:12.986931+00:00
+bigquery,Q51,wide_scan,0,True,13222.856916981982,324572,16798334155,16799236096,50000,0,False,324572,0.07639408111572266,,2026-01-26T11:07:26.215441+00:00
+bigquery,Q51,wide_scan,1,False,4936.384957982227,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:07:31.168179+00:00
+bigquery,Q51,wide_scan,2,False,4346.954458014807,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:07:35.530080+00:00
+bigquery,Q51,wide_scan,3,False,4896.270333003486,0,0,0,50000,0,True,0,0.01,,2026-01-26T11:07:40.442570+00:00
+bigquery,Q52,wide_scan,0,True,13507.189458992798,543928,16800453733,16801333248,1920,0,False,543928,0.07640361785888672,,2026-01-26T11:07:53.966195+00:00
+bigquery,Q52,wide_scan,1,False,1213.6724170122761,0,0,0,1920,0,True,0,0.01,,2026-01-26T11:07:55.185294+00:00
+bigquery,Q52,wide_scan,2,False,1091.4180830004625,0,0,0,1920,0,True,0,0.01,,2026-01-26T11:07:56.284254+00:00
+bigquery,Q52,wide_scan,3,False,1099.7971659817267,0,0,0,1920,0,True,0,0.01,,2026-01-26T11:07:57.390029+00:00
+bigquery,Q53,wide_scan,0,True,6960.5539579933975,278792,16798334155,16799236096,100,0,False,278792,0.07639408111572266,,2026-01-26T11:08:04.357158+00:00
+bigquery,Q53,wide_scan,1,False,1010.0922499841545,0,0,0,100,0,True,0,0.01,,2026-01-26T11:08:05.372397+00:00
+bigquery,Q53,wide_scan,2,False,885.0921249832027,0,0,0,100,0,True,0,0.01,,2026-01-26T11:08:06.262997+00:00
+bigquery,Q53,wide_scan,3,False,877.7554999978747,0,0,0,100,0,True,0,0.01,,2026-01-26T11:08:07.144602+00:00
+bigquery,Q54,wide_scan,0,True,682.3187079862691,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: 2bf87037-216f-405e-b5ce-ac4dbd631be6
+",2026-01-26T11:08:07.832045+00:00
+bigquery,Q54,wide_scan,1,False,553.7965419935063,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: 9c3d4856-58c6-471a-905b-6735d7f88cb8
+",2026-01-26T11:08:08.389753+00:00
+bigquery,Q54,wide_scan,2,False,564.7133750026114,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: d8f99e6d-6045-4121-9a87-cdb964f85e3d
+",2026-01-26T11:08:08.960286+00:00
+bigquery,Q54,wide_scan,3,False,631.8417500006035,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: bf3f1ebc-eda2-4d47-8a74-c265f96e11c9
+",2026-01-26T11:08:09.597748+00:00
+bigquery,Q55,wide_scan,0,True,574.8405000194907,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: a09cb146-cc78-4c3b-b5be-9a8abbf02ab5
+",2026-01-26T11:08:10.180690+00:00
+bigquery,Q55,wide_scan,1,False,544.0319589979481,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: c6d84692-ffb3-41e7-b12d-1329c03405ae
+",2026-01-26T11:08:10.732578+00:00
+bigquery,Q55,wide_scan,2,False,537.8783750056755,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: bfb54654-3264-486a-84fc-fe0716932b4c
+",2026-01-26T11:08:11.277836+00:00
+bigquery,Q55,wide_scan,3,False,579.7399590082932,0,0,0,0,0,,0,0.0,"400 Name changePercent not found inside e at [11:19]; reason: invalidQuery, location: query, message: Name changePercent not found inside e at [11:19]
+
+Location: europe-west1
+Job ID: ef1c9813-b2d1-4a01-b6df-33be0471ef12
+",2026-01-26T11:08:11.864439+00:00
+bigquery,Q56,wide_scan,0,True,12511.552416021004,182944,19190567329,19191037952,100000,0,False,182944,0.08727073669433594,,2026-01-26T11:08:24.380661+00:00
+bigquery,Q56,wide_scan,1,False,8403.45049998723,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:08:32.823612+00:00
+bigquery,Q56,wide_scan,2,False,7587.014624994481,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:08:40.443086+00:00
+bigquery,Q56,wide_scan,3,False,7193.977374990936,0,0,0,100000,0,True,0,0.01,,2026-01-26T11:08:47.674774+00:00
+bigquery,Q57,wide_scan,0,True,639.3875840003602,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: ef568e43-d043-4f71-ae92-7276dc820ebb
+",2026-01-26T11:08:48.344818+00:00
+bigquery,Q57,wide_scan,1,False,546.3550840213429,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: 0a21e880-6b1e-4959-bccf-a39856410dfa
+",2026-01-26T11:08:48.896612+00:00
+bigquery,Q57,wide_scan,2,False,532.3352919949684,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: 81569968-0c57-4d03-ab19-f2cf0bf5087d
+",2026-01-26T11:08:49.434617+00:00
+bigquery,Q57,wide_scan,3,False,564.9476670078002,0,0,0,0,0,,0,0.0,"400 Name volAvg not found inside p at [15:19]; reason: invalidQuery, location: query, message: Name volAvg not found inside p at [15:19]
+
+Location: europe-west1
+Job ID: b837d836-e90a-49b9-b4d3-988c6408a252
+",2026-01-26T11:08:50.005732+00:00
