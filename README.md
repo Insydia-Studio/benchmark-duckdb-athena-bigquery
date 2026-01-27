@@ -1,6 +1,6 @@
 # Cloud Data Platform Benchmark: DuckDB vs BigQuery vs Athena
 
-Benchmark comparing analytical query performance across DuckDB, BigQuery, and Athena on ~50GB of financial time-series data in Parquet format.
+Benchmark comparing analytical query performance across DuckDB, BigQuery, and Athena on ~20GB of financial time-series data in Parquet format.
 
 ## Results Summary
 
@@ -20,7 +20,7 @@ Benchmark comparing analytical query performance across DuckDB, BigQuery, and At
 
 ## Dataset
 
-- **Size:** ~50GB
+- **Size:** ~20GB
 - **Format:** Parquet, ZSTD compressed
 - **Partitioning:** None
 - **Sort order:** `(symbol, dateEpoch)` for time-series tables
@@ -45,11 +45,11 @@ sp500_constituent  → indices/sp500_constituent/*     (sorted: symbol)
 | DuckDB Local | Local SSD | Lauterbourg, FR |
 
 **DuckDB configurations:**
-- Minimal: 1 thread, 2GB RAM, 5GB temp
-- Small: 4 threads, 8GB RAM, 10GB temp
-- Medium: 8 threads, 16GB RAM, 20GB temp
-- Large: 16 threads, 32GB RAM, 50GB temp
-- Maximum: 32 threads, 64GB RAM, 100GB temp
+- Minimal: 1 thread, 2GB RAM, 5GB temp (disk-spill)
+- Small: 4 threads, 8GB RAM, 10GB temp (disk-spill)
+- Medium: 8 threads, 16GB RAM, 20GB temp (disk-spill)
+- Large: 16 threads, 32GB RAM, 50GB temp (disk-spill)
+- XL: 32 threads, 64GB RAM, 100GB temp (disk-spill)
 
 ## Queries
 
