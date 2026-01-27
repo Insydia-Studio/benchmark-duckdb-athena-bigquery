@@ -544,15 +544,200 @@ ATHENA_OVERRIDES = {
     ),
 }
 
+# DuckDB overrides - fix missing columns and DATE_TRUNC
+DUCKDB_OVERRIDES = {
+    "Q43": BenchmarkQuery(
+        id="Q43",
+        name="Full OHLCV Export",
+        description="Export all price columns for recent data (DuckDB - no changePercent)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                symbol,
+                dateEpoch,
+                open,
+                high,
+                low,
+                close,
+                volume,
+                adjClose
+            FROM {table_prefix}stock_eod
+            WHERE dateEpoch >= 1704067200
+            ORDER BY symbol, dateEpoch
+            LIMIT 100000
+        """
+    ),
+    "Q44": BenchmarkQuery(
+        id="Q44",
+        name="S&P 500 Full History Export",
+        description="Complete OHLCV data for S&P 500 constituents (DuckDB - no changePercent)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                e.symbol,
+                e.dateEpoch,
+                e.open,
+                e.high,
+                e.low,
+                e.close,
+                e.volume,
+                e.adjClose
+            FROM {table_prefix}stock_eod e
+            WHERE e.symbol IN (SELECT symbol FROM {table_prefix}sp500_constituent)
+            ORDER BY e.symbol, e.dateEpoch
+            LIMIT 100000
+        """
+    ),
+    "Q51": BenchmarkQuery(
+        id="Q51",
+        name="Monthly OHLCV Rollup",
+        description="Monthly aggregation of all price and volume data (DuckDB)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                symbol,
+                (dateEpoch - (dateEpoch % 2592000)) as month_epoch,
+                MIN(open) as month_open,
+                MAX(high) as month_high,
+                MIN(low) as month_low,
+                MAX(close) as month_close,
+                SUM(volume) as total_volume,
+                AVG(volume) as avg_daily_volume,
+                COUNT(*) as trading_days,
+                STDDEV(close) as price_volatility,
+                AVG(high - low) as avg_daily_range
+            FROM {table_prefix}stock_eod
+            WHERE dateEpoch >= 1672531200
+            GROUP BY symbol, month_epoch
+            ORDER BY symbol, month_epoch
+            LIMIT 50000
+        """
+    ),
+    "Q52": BenchmarkQuery(
+        id="Q52",
+        name="Sector-Wide OHLCV Analysis",
+        description="Aggregate all price data by sector and date (DuckDB)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                p.sector,
+                (e.dateEpoch - (e.dateEpoch % 604800)) as week_epoch,
+                COUNT(DISTINCT e.symbol) as num_stocks,
+                AVG(e.open) as avg_open,
+                AVG(e.high) as avg_high,
+                AVG(e.low) as avg_low,
+                AVG(e.close) as avg_close,
+                SUM(e.volume) as total_volume,
+                AVG(e.high - e.low) as avg_range,
+                AVG((e.close - e.open) / NULLIF(e.open, 0) * 100) as avg_daily_return
+            FROM {table_prefix}stock_eod e
+            JOIN {table_prefix}profile p ON e.symbol = p.symbol
+            WHERE e.dateEpoch >= 1672531200
+            GROUP BY p.sector, week_epoch
+            ORDER BY week_epoch DESC, total_volume DESC
+            LIMIT 10000
+        """
+    ),
+    "Q54": BenchmarkQuery(
+        id="Q54",
+        name="Enriched OHLCV with Profile",
+        description="Full price data enriched with company fundamentals (DuckDB)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                e.symbol,
+                e.dateEpoch,
+                e.open,
+                e.high,
+                e.low,
+                e.close,
+                e.volume,
+                e.adjClose,
+                p.sector,
+                p.industry,
+                p.marketCap,
+                p.beta,
+                p.averageVolume,
+                e.volume / NULLIF(p.averageVolume, 0) as relative_volume
+            FROM {table_prefix}stock_eod e
+            JOIN {table_prefix}profile p ON e.symbol = p.symbol
+            WHERE e.dateEpoch >= 1704067200
+            ORDER BY e.dateEpoch DESC, e.volume DESC
+            LIMIT 100000
+        """
+    ),
+    "Q55": BenchmarkQuery(
+        id="Q55",
+        name="Large Cap Full Data Extract",
+        description="Complete OHLCV for large cap stocks with all metadata (DuckDB)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                e.symbol,
+                e.dateEpoch,
+                e.open,
+                e.high,
+                e.low,
+                e.close,
+                e.volume,
+                e.adjClose,
+                p.companyName,
+                p.sector,
+                p.industry,
+                p.marketCap,
+                p.beta
+            FROM {table_prefix}stock_eod e
+            JOIN {table_prefix}profile p ON e.symbol = p.symbol
+            WHERE p.marketCap > 10000000000
+              AND e.dateEpoch >= 1672531200
+            ORDER BY p.marketCap DESC, e.dateEpoch DESC
+            LIMIT 100000
+        """
+    ),
+    "Q57": BenchmarkQuery(
+        id="Q57",
+        name="Multi-Table Wide Join",
+        description="Comprehensive stock data combining EOD, profile, and index membership (DuckDB)",
+        category="wide_scan",
+        sql_template="""
+            SELECT
+                e.symbol,
+                e.dateEpoch,
+                e.open,
+                e.high,
+                e.low,
+                e.close,
+                e.volume,
+                e.adjClose,
+                p.sector,
+                p.industry,
+                p.marketCap,
+                p.beta,
+                p.averageVolume,
+                CASE WHEN s.symbol IS NOT NULL THEN 1 ELSE 0 END as is_sp500,
+                s.subSector as sp500_subsector
+            FROM {table_prefix}stock_eod e
+            JOIN {table_prefix}profile p ON e.symbol = p.symbol
+            LEFT JOIN {table_prefix}sp500_constituent s ON e.symbol = s.symbol
+            WHERE e.dateEpoch >= 1704067200
+              AND e.volume > 100000
+            ORDER BY e.dateEpoch DESC, e.volume DESC
+            LIMIT 100000
+        """
+    ),
+}
+
 
 def get_queries(platform: str = "duckdb") -> list[BenchmarkQuery]:
     """Get queries with platform-specific overrides applied."""
-    queries = WIDE_SCAN_QUERIES.copy()
+    queries = list(WIDE_SCAN_QUERIES)  # Create a copy
 
     if platform == "bigquery":
         overrides = BIGQUERY_OVERRIDES
     elif platform == "athena":
         overrides = ATHENA_OVERRIDES
+    elif platform == "duckdb":
+        overrides = DUCKDB_OVERRIDES
     else:
         return queries
 
