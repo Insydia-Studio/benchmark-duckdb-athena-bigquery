@@ -17,7 +17,7 @@ A benchmark of analytical query performance across DuckDB (local SSD and Cloudfl
 
 ## Setup from a fresh clone
 
-Python 3.11. There is no requirements file; these are the third-party imports:
+No file pins a Python version; these steps were checked with Python 3.11. There is no requirements file; these are the third-party imports:
 
 ```bash
 python3.11 -m venv .venv
@@ -64,12 +64,12 @@ Nothing builds or deploys. A merge to `main` publishes the scripts and the CSVs 
 
 ## Gotchas
 
-- The scripts carry default cloud project, bucket, endpoint and local data path values. Don't repeat them in docs, PRs or new code. Pass your own through the env vars and flags above.
+- The scripts carry default cloud project, bucket, endpoint and local data path values. Pass your own through the env vars and flags above.
 - Athena database, workgroup, output location and region are module constants in `run_cloud_benchmark.py` and `run_wide_scan_benchmark.py`, with no flag or env var. `run_wide_scan_benchmark.py` also hard-codes its DuckDB data path (`DUCKDB_LOCAL_DATA`).
 - Output locations differ by script:
   - `run_cloud_benchmark.py` and `run_wide_scan_benchmark.py` write to `scripts/results/`. `run_wide_scan_benchmark.py` creates that folder on import, even for `--help`.
   - The DuckDB runners write to `results/` relative to the working directory (`--output-dir` overrides).
-- `analyze_all_results.py` and `consolidate_results.py` read hard-coded CSV names from `scripts/results/`, not the repo-root `results/`. They write to `scripts/content/`, which `.gitignore` excludes.
+- `analyze_all_results.py` and `consolidate_results.py` read hard-coded CSV names (and, in `consolidate_results.py`, the newest `wide_scan_*` CSVs) from `scripts/results/`, not the repo-root `results/`. They write to `scripts/content/`, which `.gitignore` excludes.
 - `run_wide_scan_benchmark.py --platforms all` runs bigquery, athena and duckdb_local only. Name `duckdb_r2` explicitly.
 - `run_cloud_benchmark.py --queries` defaults to `Q01` only.
 - `README.md` Structure tree is stale: it omits `run_duckdb_wide_scan_benchmark.py` and the two `wide_scan_duckdb_*` CSVs.
