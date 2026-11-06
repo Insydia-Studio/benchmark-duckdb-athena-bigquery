@@ -42,10 +42,10 @@ R2_ACCESS_KEY = os.environ.get("R2_ACCESS_KEY_ID", "")
 R2_SECRET_KEY = os.environ.get("R2_SECRET_ACCESS_KEY", "")
 R2_BASE_PATH = f"s3://{R2_BUCKET}/data_source=fmp"
 
-# Validate R2 credentials
+# Validate R2 settings
 if not R2_ENDPOINT or not R2_ACCESS_KEY or not R2_SECRET_KEY or not R2_BUCKET:
     import sys
-    print("ERROR: R2 credentials not set. Please set environment variables:")
+    print("ERROR: R2 settings not set. Please set environment variables:")
     print("  export R2_ENDPOINT=<your-r2-endpoint>")
     print("  export R2_ACCESS_KEY_ID=<your-access-key>")
     print("  export R2_SECRET_ACCESS_KEY=<your-secret-key>")
