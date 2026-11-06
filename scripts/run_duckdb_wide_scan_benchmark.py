@@ -44,7 +44,7 @@ DATA_PREFIX = "data_source=fmp"
 R2_ENDPOINT = os.environ.get("R2_ENDPOINT", "")
 R2_ACCESS_KEY_ID = os.environ.get("R2_ACCESS_KEY_ID", "")
 R2_SECRET_ACCESS_KEY = os.environ.get("R2_SECRET_ACCESS_KEY", "")
-R2_BUCKET = os.environ.get("R2_BUCKET", "ts-data-backups")
+R2_BUCKET = os.environ.get("R2_BUCKET", "")
 R2_DATA_PREFIX = "data_source=fmp"
 
 # Cost calculation constants
@@ -189,8 +189,8 @@ def create_connection(
 
     # R2/S3 configuration
     if use_r2:
-        if not all([R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY]):
-            raise ValueError("R2 credentials not set. Set R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY")
+        if not all([R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET]):
+            raise ValueError("R2 settings not set. Set R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET")
 
         conn.execute("INSTALL httpfs")
         conn.execute("LOAD httpfs")
@@ -500,9 +500,9 @@ def main():
     print(f"Queries: Q43-Q57 ({len(WIDE_SCAN_QUERIES)} wide scan queries)")
 
     if args.backend in ["r2", "both"]:
-        if not R2_ENDPOINT:
-            print("\nWarning: R2 credentials not set. Set environment variables:")
-            print("  R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY")
+        if not (R2_ENDPOINT and R2_BUCKET):
+            print("\nWarning: R2 settings not set. Set environment variables:")
+            print("  R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET")
             if args.backend == "r2":
                 return
 

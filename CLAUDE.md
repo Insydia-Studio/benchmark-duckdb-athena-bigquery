@@ -44,8 +44,8 @@ There are no tests and no CI. The only checks that run without credentials:
 .venv/bin/python scripts/queries_wide_scan.py
 ```
 
-- `run_duckdb_r2_benchmark.py --help` exits 1 unless the three R2 credential variables are set, because the check runs at import. Dummy values are enough for `--help`:
-  `R2_ENDPOINT=x R2_ACCESS_KEY_ID=x R2_SECRET_ACCESS_KEY=x .venv/bin/python scripts/run_duckdb_r2_benchmark.py --help`
+- `run_duckdb_r2_benchmark.py --help` exits 1 unless the four R2 variables are set, because the check runs at import. Dummy values are enough for `--help`:
+  `R2_ENDPOINT=x R2_ACCESS_KEY_ID=x R2_SECRET_ACCESS_KEY=x R2_BUCKET=x .venv/bin/python scripts/run_duckdb_r2_benchmark.py --help`
 - Don't run a benchmark to "test" a change: each run queries billed cloud services or needs the local dataset.
 
 ## How changes ship
@@ -64,7 +64,7 @@ Nothing builds or deploys. A merge to `main` publishes the scripts and the CSVs 
 
 ## Gotchas
 
-- The scripts carry default cloud project, bucket, endpoint and local data path values. Pass your own through the env vars and flags above.
+- The scripts carry default cloud project, bucket and local data path values; R2 has none. Pass your own through the env vars and flags above.
 - Athena database, workgroup, output location and region are module constants in `run_cloud_benchmark.py` and `run_wide_scan_benchmark.py`, with no flag or env var. `run_wide_scan_benchmark.py` also hard-codes its DuckDB data path (`DUCKDB_LOCAL_DATA`).
 - Output locations differ by script:
   - `run_cloud_benchmark.py` and `run_wide_scan_benchmark.py` write to `scripts/results/`. `run_wide_scan_benchmark.py` creates that folder on import, even for `--help`.

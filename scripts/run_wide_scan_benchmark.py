@@ -46,7 +46,6 @@ BIGQUERY_DATASET = "ceta_benchmark"
 
 # DuckDB configs
 DUCKDB_LOCAL_DATA = "/opt/insydia/data"
-DUCKDB_R2_ENDPOINT = os.environ.get("R2_ENDPOINT", "https://e6e4d5e3ad12aa7f4f5f5d5f5e5f5e5f.r2.cloudflarestorage.com")
 
 # Cost constants
 ATHENA_COST_PER_TB = 5.0
