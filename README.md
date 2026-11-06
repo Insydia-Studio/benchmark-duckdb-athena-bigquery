@@ -109,7 +109,7 @@ Requires R2 credentials in environment:
 export R2_ENDPOINT=<your-account-id>.r2.cloudflarestorage.com
 export R2_ACCESS_KEY_ID=...
 export R2_SECRET_ACCESS_KEY=...
-export R2_BUCKET=your-bucket-name  # optional, defaults to ts-data-backups
+export R2_BUCKET=your-bucket-name
 
 python scripts/run_duckdb_r2_benchmark.py
 ```
