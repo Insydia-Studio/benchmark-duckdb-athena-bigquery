@@ -1,5 +1,10 @@
 # CLAUDE.md
 
+## Before you change anything
+
+- Don't run a benchmark to "test" a change: each run queries billed cloud services or needs the local dataset.
+- Don't commit result files from a local run unless the change is meant to publish new results.
+
 <!-- shared:public-rules v2. Every public repo of ours carries this block word for word; change it in all of them at once, never in one repo alone. -->
 ## Rules for every change
 
@@ -57,7 +62,6 @@ There are no tests and no CI. The only checks that run without credentials:
 
 - `run_duckdb_r2_benchmark.py --help` exits 1 unless the four R2 variables are set, because the check runs at import. Dummy values are enough for `--help`:
   `R2_ENDPOINT=x R2_ACCESS_KEY_ID=x R2_SECRET_ACCESS_KEY=x R2_BUCKET=x .venv/bin/python scripts/run_duckdb_r2_benchmark.py --help`
-- Don't run a benchmark to "test" a change: each run queries billed cloud services or needs the local dataset.
 
 ## How changes ship
 
@@ -75,4 +79,3 @@ Nothing builds or deploys. A merge to `main` publishes the scripts and the CSVs 
 - `run_cloud_benchmark.py --queries` defaults to `Q01` only.
 - `README.md` Structure tree is stale: it omits `run_duckdb_wide_scan_benchmark.py` and the two `wide_scan_duckdb_*` CSVs.
 - `README.md` Prerequisites lists `pandas`, which no script imports.
-- Don't commit result files from a local run unless the change is meant to publish new results.
