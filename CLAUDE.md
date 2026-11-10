@@ -1,5 +1,18 @@
 # CLAUDE.md
 
+## Before you change anything
+
+- Don't run a benchmark to "test" a change: each run queries billed cloud services or needs the local dataset.
+- Don't commit result files from a local run unless the change is meant to publish new results.
+
+<!-- shared:public-rules v3. Every public repo of ours carries this block word for word; change it in all of them at once, never in one repo alone. -->
+## Rules for every change
+
+- Never commit a server address, or anything else that isn't meant to be public.
+- Treat the default branch as released code: it can reach users without a further step.
+- One copy of everything. Never copy a block of code: reuse it, or move it into a shared helper. Instructions follow the same rule: each rule lives in one file and other files point to it, so nothing can drift apart. Keep files and functions small, and write a code comment only where the code needs one.
+<!-- /shared:public-rules -->
+
 ## What this is
 
 A benchmark of analytical query performance across DuckDB (local SSD and Cloudflare R2), BigQuery and Athena on ~20GB of financial time-series Parquet data. It holds the runner scripts, the query set (Q01-Q57) and the published result CSVs. `README.md` has the results summary, dataset and run instructions.
@@ -46,21 +59,10 @@ There are no tests and no CI. The only checks that run without credentials:
 
 - `run_duckdb_r2_benchmark.py --help` exits 1 unless the four R2 variables are set, because the check runs at import. Dummy values are enough for `--help`:
   `R2_ENDPOINT=x R2_ACCESS_KEY_ID=x R2_SECRET_ACCESS_KEY=x R2_BUCKET=x .venv/bin/python scripts/run_duckdb_r2_benchmark.py --help`
-- Don't run a benchmark to "test" a change: each run queries billed cloud services or needs the local dataset.
 
 ## How changes ship
 
 Nothing builds or deploys. A merge to `main` publishes the scripts and the CSVs in this public repo, and nothing else.
-
-<!-- shared:public-rules v1. Every public repo of ours carries this block word for word. -->
-## Rules for every change
-
-- No AI attribution: no Co-Authored-By trailer, no "Generated with Claude Code" line and no session link in commits or PR bodies.
-- Never commit a secret, an API key, a server address, or anything that isn't meant to be public.
-- One copy of everything. Never copy a block of code: reuse it, or move it into a shared helper. Instructions follow the same rule: each rule lives in one file and other files point to it. Keep files and functions small.
-- Treat the default branch as released code: it can reach users without a further step.
-- Write plainly: short sentences, lead with the point, no em-dash connectors.
-<!-- /shared:public-rules -->
 
 ## Gotchas
 
@@ -74,4 +76,3 @@ Nothing builds or deploys. A merge to `main` publishes the scripts and the CSVs 
 - `run_cloud_benchmark.py --queries` defaults to `Q01` only.
 - `README.md` Structure tree is stale: it omits `run_duckdb_wide_scan_benchmark.py` and the two `wide_scan_duckdb_*` CSVs.
 - `README.md` Prerequisites lists `pandas`, which no script imports.
-- Don't commit result files from a local run unless the change is meant to publish new results.
